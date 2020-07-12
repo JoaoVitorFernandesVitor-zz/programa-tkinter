@@ -2,6 +2,7 @@ from tkinter import *
 from fucoes import *
 
 
+
 #Iniciando a tela principal
 screen = Tk()
 
@@ -21,5 +22,13 @@ posy = altura_screen/2 - altura/2
 screen.geometry('%dx%d+%d+%d'%(largura, altura, posx, posy))
 screen.title(titulo)
 #screen.icon= icone
+
+#Adicionando Widgets
+b1 = Botao(screen,'Entrar')
+e1 = MinhaEntry(screen, )
+l2 = label(screen, 'Senha')
+
+l2['text'] = 'fon'
+
 
 screen.mainloop()
