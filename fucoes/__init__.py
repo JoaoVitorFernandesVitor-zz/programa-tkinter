@@ -1,7 +1,7 @@
 from tkinter import *
 
-#criando a tela principal
-def init_screen(size= '800x600'):
-    screen = Tk()
-    screen.geometry(size)
-    screen.mainloop()
+
+#criando botao
+def botao(parent, texto, row_ = 0, column_ = 0):
+    bt = Button(parent,text= texto,)
+    bt.grid(row = row_, column= column_ )
