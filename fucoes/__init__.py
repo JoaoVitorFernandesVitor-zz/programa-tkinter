@@ -12,8 +12,12 @@ def Centery(parent,alt):
     posy = altura_screen/2 - alt/2
     return posy
 
-
-
+#Banco de Dados
+B_dados = {'Yuki':
+            {'senha': '1234',
+            'funcao': 'adm'           
+}
+}
 
 
 
@@ -34,7 +38,11 @@ class Login(Frame):
         def validar():
             user = entry_name.get()
             senha = entry_password.get()
-            print(user,senha)
+            
+            if B_dados[user]['senha'] == senha:
+                print('validado com sucesso')
+            else:
+                print('falha')
 
         #widgets
         entry_name = Entry(self, bd = 3)
