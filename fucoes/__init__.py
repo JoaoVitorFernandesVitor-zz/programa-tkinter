@@ -30,6 +30,7 @@ class Login(Frame):
         entry_password  = Entry(self, bd = 3)
         user_password = Label(self, text = 'Passwors', bd = 3, relief = RAISED) 
         espace = Label(self, bg = self['bg'])
+        bt_login = Button(self,text ="Logar")
         
         #Widgets Grids
         self.grid()
@@ -38,5 +39,6 @@ class Login(Frame):
         espace.grid()
         user_password.grid()
         entry_password.grid()
+        bt_login.grid()
     #validação
     #autodestruir

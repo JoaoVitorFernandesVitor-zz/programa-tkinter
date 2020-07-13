@@ -10,7 +10,7 @@ screen = Tk()
 altura = 600
 largura = 800
 titulo = 'Login'
-icone = ''
+icone = 'imagens/aranha.ico'
 screen.resizable (False, False)
 
 #Centralizando a Tela
@@ -20,7 +20,7 @@ tela_y = Centery(screen, altura)
 #Programação da Tela
 screen.geometry('%dx%d+%d+%d'%(largura, altura, tela_x, tela_y))
 screen.title(titulo)
-#screen.icon= icone
+screen.iconbitmap(icone)
 
 
 #Adicionando Widgets
