@@ -12,6 +12,11 @@ def Centery(parent,alt):
     posy = altura_screen/2 - alt/2
     return posy
 
+
+
+
+
+
 #Criando Frame Login
 class Login(Frame):
     def __init__(self, parent):
@@ -24,14 +29,21 @@ class Login(Frame):
         self['padx'] = 340  
         self['pady'] = 270
         
+
+        #Função para validar a entrada do usuario com o banco de dados
+        def validar():
+            user = entry_name.get()
+            senha = entry_password.get()
+            print(user,senha)
+
         #widgets
         entry_name = Entry(self, bd = 3)
         user_name  = Label(self, text = 'Username', bd = 3, relief = RAISED)
-        entry_password  = Entry(self, bd = 3)
+        entry_password  = Entry(self, bd = 3 )
         user_password = Label(self, text = 'Passwors', bd = 3, relief = RAISED) 
         espace = Label(self, bg = self['bg'])
-        bt_login = Button(self,text ="Logar")
-        
+        bt_login = Button(self,text ="Logar", command = validar)
+
         #Widgets Grids
         self.grid()
         user_name.grid()
@@ -39,6 +51,7 @@ class Login(Frame):
         espace.grid()
         user_password.grid()
         entry_password.grid()
-        bt_login.grid()
-    #validação
+        bt_login.grid()  
+
+        
     #autodestruir
