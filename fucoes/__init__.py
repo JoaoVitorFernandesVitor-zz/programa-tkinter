@@ -1,5 +1,6 @@
 from tkinter import *
 from time import *
+
 def Centerx(parent, lar):
     #Fução q acha o centro x da resolução
     largura_screen = parent.winfo_screenwidth()
@@ -33,8 +34,6 @@ class Login(Frame):
         self['padx'] = 300  
         self['pady'] = 300
 
-        
-
         #Função para validar a entrada do usuario com o banco de dados
         def validar():
             user = entry_name.get()
@@ -44,6 +43,7 @@ class Login(Frame):
                 if B_dados[user]['senha'] == senha:
                     print('validado com sucesso')
                     espace['text'] = ''
+                    self.destroy()
                 else:
                     espace['text'] = 'Senha Incorreta'
                     espace['fg'] = 'red'  
@@ -60,13 +60,10 @@ class Login(Frame):
         bt_login = Button(self,text ="Logar", command = validar)
 
         #Widgets Grids
-        self.grid()
         user_name.grid(row = 0)
         entry_name.grid(row = 1)
         espace.grid(row = 2)
-        user_password.grid(row = 3, columnspan = 2)
+        user_password.grid(row = 3, columnspan = 2,)
         entry_password.grid(row = 4)
         bt_login.grid(row = 5)  
-
-        
-    #autodestruir
+        self.grid()
