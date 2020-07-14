@@ -50,14 +50,74 @@ class Login(Frame):
             except(KeyError):
                 espace['text'] = 'Usuario ou senha estão incoretos'
                 espace['fg'] = 'red'
+        
+        def register():
+
+            #Funcoes
+            def cadastrar():
+                r_name = entry_Ruser.get()
+                r_pass = entry_Rpassword.get()
+                r_confirm = entry_Rconfimpass.get()
+
+                #Verifica se usuario ja existe
+                try:
+                    if B_dados[r_name]:
+                        print('Usuario Ja Cadastrado')
+
+                #Se nao existir adiciona no banco de dados
+                except(KeyError):
+                    
+                    B_dados[r_name]= {'senha' : r_pass }
+
+            #Propriedades da tela de registro
+            r_lar = 250
+            r_alt = 150
+            r_titulo = 'Registrar-se'
+            r_x = Centerx(self, r_alt)
+            r_y = Centery(self, r_lar)
+
+            #Configurando tela registro
+            r_janela = Toplevel(parent)
+            r_janela.geometry('%dx%d+%d+%d' %(r_lar, r_alt, r_x, r_y))
+            r_janela.title(r_titulo)
+            r_janela.resizable(False, False)
+
+            #Widgets registro
+            t_frame =Frame(r_janela,width = 300,heigh = 10)
+            tituloI_text = Label(r_janela, text = 'Novo Registro', font = 'Arial 20', width = 15)
             
-        #widgets
+            entry_Ruser = Entry(r_janela, bd = 3)
+            user_text = Label(r_janela, text = 'User')
+            
+            entry_Rpassword = Entry(r_janela, bd = 3)
+            password_text = Label(r_janela, text = 'Password')
+            
+            entry_Rconfimpass = Entry(r_janela, bd = 3)
+            confirmpass_text = Label(r_janela, text = 'Confirm')
+            
+            bt_registrar = Button(r_janela, text = 'Registrar' , command = cadastrar)
+            #Grids registro
+            tituloI_text.grid(columnspan = 3)
+
+            entry_Ruser.grid(row = 1 , column = 1)
+            user_text.grid(row = 1)
+
+            
+            entry_Rpassword.grid(row = 2, column = 1)
+            password_text.grid(row = 2)
+            
+            entry_Rconfimpass.grid(row = 3, column = 1)
+            confirmpass_text.grid(row = 3)
+            bt_registrar .grid(column = 1)
+
+        #widgets login
         entry_name = Entry(self, bd = 3)
         user_name  = Label(self, text = 'Username', bd = 3, relief = RAISED)
         entry_password  = Entry(self, bd = 3 )
         user_password = Label(self, text = 'Passwors', bd = 3, relief = RAISED) 
         espace = Label(self, bg = self['bg'], width = 30 )
         bt_login = Button(self,text ="Logar", command = validar)
+        bt_create = Button(self, text = 'Criar Conta', command = register)
 
         #Widgets Grids
         user_name.grid(row = 0)
@@ -66,4 +126,5 @@ class Login(Frame):
         user_password.grid(row = 3, columnspan = 2,)
         entry_password.grid(row = 4)
         bt_login.grid(row = 5)  
+        bt_create.grid(row = 6)
         self.grid()
