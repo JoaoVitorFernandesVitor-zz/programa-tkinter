@@ -1,5 +1,5 @@
 from tkinter import *
-
+from time import *
 def Centerx(parent, lar):
     #Fução q acha o centro x da resolução
     largura_screen = parent.winfo_screenwidth()
@@ -27,11 +27,12 @@ class Login(Frame):
         super().__init__()
         #propriedades do Frame
         self['bg'] = '#201D1D'
-        self['heigh'] = 100
-        self['width'] = 100
+        self['heigh'] = 600
+        self['width'] = 800
         self['relief'] = SOLID
-        self['padx'] = 340  
-        self['pady'] = 270
+        self['padx'] = 300  
+        self['pady'] = 300
+
         
 
         #Função para validar a entrada do usuario com o banco de dados
@@ -39,27 +40,33 @@ class Login(Frame):
             user = entry_name.get()
             senha = entry_password.get()
             
-            if B_dados[user]['senha'] == senha:
-                print('validado com sucesso')
-            else:
-                print('falha')
-
+            try:
+                if B_dados[user]['senha'] == senha:
+                    print('validado com sucesso')
+                    espace['text'] = ''
+                else:
+                    espace['text'] = 'Senha Incorreta'
+                    espace['fg'] = 'red'  
+            except(KeyError):
+                espace['text'] = 'Usuario ou senha estão incoretos'
+                espace['fg'] = 'red'
+            
         #widgets
         entry_name = Entry(self, bd = 3)
         user_name  = Label(self, text = 'Username', bd = 3, relief = RAISED)
         entry_password  = Entry(self, bd = 3 )
         user_password = Label(self, text = 'Passwors', bd = 3, relief = RAISED) 
-        espace = Label(self, bg = self['bg'])
+        espace = Label(self, bg = self['bg'], width = 30 )
         bt_login = Button(self,text ="Logar", command = validar)
 
         #Widgets Grids
         self.grid()
-        user_name.grid()
-        entry_name.grid()
-        espace.grid()
-        user_password.grid()
-        entry_password.grid()
-        bt_login.grid()  
+        user_name.grid(row = 0)
+        entry_name.grid(row = 1)
+        espace.grid(row = 2)
+        user_password.grid(row = 3, columnspan = 2)
+        entry_password.grid(row = 4)
+        bt_login.grid(row = 5)  
 
         
     #autodestruir

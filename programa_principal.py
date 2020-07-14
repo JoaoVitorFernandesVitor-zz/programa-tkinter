@@ -13,6 +13,7 @@ titulo = 'Login'
 icone = 'imagens/aranha.ico'
 screen.resizable (False, False)
 
+
 #Centralizando a Tela
 tela_x = Centerx(screen, largura)
 tela_y = Centery(screen, altura)
@@ -21,7 +22,6 @@ tela_y = Centery(screen, altura)
 screen.geometry('%dx%d+%d+%d'%(largura, altura, tela_x, tela_y))
 screen.title(titulo)
 screen.iconbitmap(icone)
-
 
 #Adicionando Widgets
 login = Login(screen)
