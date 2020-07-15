@@ -51,23 +51,47 @@ class Login(Frame):
                 espace['text'] = 'Usuario ou senha estão incoretos'
                 espace['fg'] = 'red'
         
+        #Tela para Registro 
         def register():
 
             #Funcoes
             def cadastrar():
-                r_name = entry_Ruser.get()
+                r_user = entry_Ruser.get()
                 r_pass = entry_Rpassword.get()
                 r_confirm = entry_Rconfimpass.get()
-
-                #Verifica se usuario ja existe
+            
+             #Tratamento de Erros
+                
+               #Verifica se nome do usuario ja existe
                 try:
-                    if B_dados[r_name]:
+                    if B_dados[r_user]:
                         print('Usuario Ja Cadastrado')
 
-                #Se nao existir adiciona no banco de dados
+               #Se nao existir,começa o cadastro
                 except(KeyError):
+                    v  = True
+                    #User em branco
+                    if r_user == '':
+                        print('Users em branco nao são permitidos')
+                        v = False
+                    #Senhas em branco
+                    if r_pass == '':
+                        print('Senhas em branco não são permitidas')
+                        v = False
+                    #Senha e User iguais
+                    if r_user == r_pass :
+                        print('User e Password não podem ser iguais')
+                        v = False
+
+                    #Verifica se as senha e a confirmação da senha sao iguais
+                    if r_pass != r_confirm:
+                        print('Password e Confirm não são iguais')
+                        v = False
                     
-                    B_dados[r_name]= {'senha' : r_pass }
+                    #Cadastrar usuario se não tiver nenhum erro
+                    if v:
+                        B_dados[r_user]= {'senha' : r_pass }
+                        print('Usuario Cadastrado com sucesso!')
 
             #Propriedades da tela de registro
             r_lar = 250
