@@ -1,5 +1,5 @@
 from tkinter import *
-from time import *
+from fucoes import main_menu
 
 def Centerx(parent, lar):
     #Fução q acha o centro x da resolução
@@ -44,6 +44,8 @@ class Login(Frame):
                     print('validado com sucesso')
                     espace['text'] = ''
                     self.destroy()
+                    main_menu.Main(parent,B_dados)
+
                 else:
                     espace['text'] = 'Senha Incorreta'
                     espace['fg'] = 'red'  
@@ -53,49 +55,56 @@ class Login(Frame):
         
         #Tela para Registro 
         def register():
+            
+            texto = StringVar()
+            
 
             #Funcoes
             def cadastrar():
                 r_user = entry_Ruser.get()
                 r_pass = entry_Rpassword.get()
                 r_confirm = entry_Rconfimpass.get()
-            
+                erro_text['fg'] = "red"
+
              #Tratamento de Erros
                 
                #Verifica se nome do usuario ja existe
                 try:
+                    
                     if B_dados[r_user]:
-                        print('Usuario Ja Cadastrado')
+                        texto.set('Usuario Ja Cadastrado')
 
                #Se nao existir,começa o cadastro
                 except(KeyError):
+
                     v  = True
                     #User em branco
                     if r_user == '':
-                        print('Users em branco nao são permitidos')
+                        texto.set('Users em branco nao são permitidos')
                         v = False
                     #Senhas em branco
                     if r_pass == '':
-                        print('Senhas em branco não são permitidas')
+                        texto.set('Senhas em branco não são permitidas')
                         v = False
                     #Senha e User iguais
                     if r_user == r_pass :
-                        print('User e Password não podem ser iguais')
+                        texto.set('User e Password não podem ser iguais')
                         v = False
 
                     #Verifica se as senha e a confirmação da senha sao iguais
                     if r_pass != r_confirm:
-                        print('Password e Confirm não são iguais')
+                        texto.set('Password e Confirm não são iguais')
                         v = False
                     
                     #Cadastrar usuario se não tiver nenhum erro
                     if v:
+                        erro_text['fg'] = "green"
                         B_dados[r_user]= {'senha' : r_pass }
-                        print('Usuario Cadastrado com sucesso!')
+                        texto.set('Usuario Cadastrado com sucesso!')
 
             #Propriedades da tela de registro
             r_lar = 250
-            r_alt = 150
+            r_alt = 160
             r_titulo = 'Registrar-se'
             r_x = Centerx(self, r_alt)
             r_y = Centery(self, r_lar)
@@ -108,8 +117,9 @@ class Login(Frame):
 
             #Widgets registro
             t_frame =Frame(r_janela,width = 300,heigh = 10)
-            tituloI_text = Label(r_janela, text = 'Novo Registro', font = 'Arial 20', width = 15)
-            
+            tituloI_text = Label(r_janela, text = 'Novo Registro', font = 'System 20', width = 15)
+            erro_text = Label(r_janela, textvariable = texto, font = 'System 12', fg = "red")
+
             entry_Ruser = Entry(r_janela, bd = 3)
             user_text = Label(r_janela, text = 'User')
             
@@ -120,19 +130,22 @@ class Login(Frame):
             confirmpass_text = Label(r_janela, text = 'Confirm')
             
             bt_registrar = Button(r_janela, text = 'Registrar' , command = cadastrar)
+
+            
             #Grids registro
             tituloI_text.grid(columnspan = 3)
+            erro_text.grid(row = 1, columnspan = 3)
 
-            entry_Ruser.grid(row = 1 , column = 1)
-            user_text.grid(row = 1)
+            entry_Ruser.grid(row = 2, column = 1)
+            user_text.grid(row = 2)
 
             
-            entry_Rpassword.grid(row = 2, column = 1)
-            password_text.grid(row = 2)
+            entry_Rpassword.grid(row = 3, column = 1)
+            password_text.grid(row = 3)
             
-            entry_Rconfimpass.grid(row = 3, column = 1)
-            confirmpass_text.grid(row = 3)
-            bt_registrar .grid(column = 1)
+            entry_Rconfimpass.grid(row = 4, column = 1)
+            confirmpass_text.grid(row = 4)
+            bt_registrar .grid(row = 5,column = 1)
 
         #widgets login
         entry_name = Entry(self, bd = 3)
