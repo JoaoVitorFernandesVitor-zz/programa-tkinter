@@ -15,9 +15,8 @@ def Centery(parent,alt):
 
 #Banco de Dados
 B_dados = {'Yuki':
-            {'senha': '1234',
-            'funcao': 'adm'           
-}
+            {'senha': '1234'} ,         
+        'yuki': {'senha': '5443'}
 }
 
 
