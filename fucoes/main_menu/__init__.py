@@ -54,6 +54,12 @@ class Main(Frame):
         bt_seach.grid(row = 1, column = 0, padx = 30, pady = 50)
         bt_del.grid(row = 2, column = 0, padx = 30, pady = 50)
         
+        #Entrada de texto
+        text_box = Entry(self, width = 30 ).grid(
+            row = 2, column = 3
+        )
+
+
         #Risco divisor vertical
         traco = Label(self, text = "", bg = "gray2", heigh = 40).grid(
             row = 0, rowspan = 3 , column = 1, sticky = N
