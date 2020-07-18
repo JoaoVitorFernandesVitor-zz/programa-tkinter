@@ -26,7 +26,5 @@ screen.iconbitmap(icone)
 screen['bg'] = 'gray'
 
 #Adicionando Widgets
-B_dados.Create()
-
 login = Login.Login(screen)
 screen.mainloop()

@@ -1,25 +1,40 @@
-import json
-#Banco de Dados
-B_dados = {'Yuki':
-            {'senha': '1234'} ,         
-        'yuki': {'senha': '5443'}
-}
-
-
+import json 
 #Cria o Banco de dados em .json
 def Create():
     try :
-        open('B_dados.json', 'x')
-        print("Baco de dados criado com sucesso")
-
+        B_dados ={
+        'Yuki':
+            {'senha': '1234'},
+        
+        'yuki':
+            {'senha': '5443'}
+        }
+        a = json.dumps(B_dados, indent = True)
+        
+        with open('B_dados.json', 'w+') as file:
+            file.write(a)   
+    
     except:
-        print('Houve um erro na criação do banco de dados')
+        print("Nao foi possivel criar Banco de dados")   
 
 #Função para se escrever no Aquivo
-def Write(text):
+def Add_user():
     try:
-        with open('B_dados.json', 'a') as file :
-            file.write(text)
+        texto = json.dumps(B_dados, indent = True)
+        with open('B_dados.json', 'w+') as file :
+            file.write(texto)
+
     except:
         print('Falha na escrita no Banco de dados')
 
+#Verifica se o aquivo ja existe
+try:
+    open('B_dados.json', 'r')
+
+except(FileNotFoundError):
+    Create()
+
+#Cria o dicionario do banco de dados
+with open('B_dados.json', 'r') as file :
+    texto = file.read()
+B_dados = json.loads(texto)

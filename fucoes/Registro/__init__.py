@@ -50,6 +50,7 @@ class Register(Frame):
                 if v:
                     erro_text['fg'] = "green"
                     B_dados.B_dados[r_user]= {'senha' : r_pass }
+                    B_dados.Add_user()
                     texto.set('Usuario Cadastrado com sucesso!')
 
         #Propriedades da tela de registro
