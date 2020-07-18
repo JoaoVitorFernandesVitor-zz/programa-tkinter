@@ -2,13 +2,7 @@ from tkinter import *
 from fucoes import main_menu
 from fucoes import Registro
 from fucoes import Math
-
-#Banco de Dados
-B_dados = {'Yuki':
-            {'senha': '1234'} ,         
-        'yuki': {'senha': '5443'}
-}
-
+from fucoes import B_dados
 
 
 #Criando Frame Login
@@ -29,11 +23,11 @@ class Login(Frame):
             senha = entry_password.get()
             
             try:
-                if B_dados[user]['senha'] == senha:
+                if B_dados.B_dados[user]['senha'] == senha:
                     print('validado com sucesso')
                     espace['text'] = ''
                     self.destroy()
-                    main_menu.Main(parent,B_dados)
+                    main_menu.Main(parent)
 
                 else:
                     espace['text'] = 'Senha Incorreta'

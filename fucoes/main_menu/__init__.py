@@ -1,10 +1,11 @@
 from tkinter import *
 from fucoes import Login
 from fucoes import Registro
+from fucoes import B_dados
 
 #Class da tela principal do sistema
 class Main(Frame):
-    def __init__(self, parent,list):
+    def __init__(self, parent):
         super().__init__()
         #propriedades do frame
         self['heigh'] = 600
@@ -21,7 +22,7 @@ class Main(Frame):
             if seach is True:
                 
                 try:
-                    t = f'User - {user} - {list[user]}'.replace('{', '').replace('}', '').replace(',', '').replace("'", '').replace(':', ' -')
+                    t = f'User - {user} - {B_dados.B_dados[user]}'.replace('{', '').replace('}', '').replace(',', '').replace("'", '').replace(':', ' -')
                 
                 except(KeyError):
                     t = 'Usuario não encontrado\nno banco de dados.'
@@ -29,9 +30,9 @@ class Main(Frame):
             # Ver todos cadastros
             else:
                 t = ''
-                for item in list:
+                for item in B_dados.B_dados:
                     
-                    t += f'\nUser - {item} - {list[item]}\n{linha}'.replace('{', '').replace('}', '').replace(',', '').replace("'", '').replace(':', ' -')
+                    t += f'\nUser - {item} - {B_dados.B_dados[item]}\n{linha}'.replace('{', '').replace('}', '').replace(',', '').replace("'", '').replace(':', ' -')
 
             texto.set(t)
             
@@ -40,7 +41,7 @@ class Main(Frame):
                     row = 0, rowspan = 5 , column = 2, sticky = N,
                     padx = 0, pady = (0,20)
                 )
-
+    
         #Função para procurar cadastrados
         def seach_C():
             user_ = entry_seach.get()

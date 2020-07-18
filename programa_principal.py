@@ -1,7 +1,7 @@
 from tkinter import *
 from fucoes import Login
 from fucoes import Math
-
+from fucoes import B_dados
 
 
 #Iniciando a tela principal
@@ -26,5 +26,7 @@ screen.iconbitmap(icone)
 screen['bg'] = 'gray'
 
 #Adicionando Widgets
+B_dados.Create()
+
 login = Login.Login(screen)
 screen.mainloop()

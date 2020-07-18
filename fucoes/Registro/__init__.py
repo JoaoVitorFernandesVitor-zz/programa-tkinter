@@ -1,6 +1,7 @@
 from tkinter import *
 from fucoes import Login
 from fucoes import Math
+from fucoes import B_dados
 
 #Tela para Registro 
 class Register(Frame):
@@ -21,7 +22,7 @@ class Register(Frame):
             #Verifica se nome do usuario ja existe
             try:
 
-                if B_dados[r_user]:
+                if B_dados.B_dados[r_user]:
                     texto.set('Usuario Ja Cadastrado')
             #Se nao existir,começa o cadastro
             except(KeyError):
@@ -48,7 +49,7 @@ class Register(Frame):
                 #Cadastrar usuario se não tiver nenhum erro
                 if v:
                     erro_text['fg'] = "green"
-                    B_dados[r_user]= {'senha' : r_pass }
+                    B_dados.B_dados[r_user]= {'senha' : r_pass }
                     texto.set('Usuario Cadastrado com sucesso!')
 
         #Propriedades da tela de registro
